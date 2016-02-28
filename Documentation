@@ -1,0 +1,22 @@
+
+							     DOCUMENTATION
+                    
+    Kullanıcıdan almamız gereken isim,soyisim.. gibi değerleri struct yapısında tuttum.
+    Array'i de sadece key ve value'dan oluşan struct yapısından oluşturdum.Key olarakta kullanıcıdan aldığım name'i belirledim.
+    Add kısmında struct yapı türünde bir nesne oluşturuyorum bunun sayesinde aldığım her değeri nesneye ekliyorum.En son nesneyi hem data hem de array' a yazıyorum.
+    Search kısmında array'in ilk ve son değeri arasında dolaşarak binary search yapıyorum ve bulduğum değeri yani value değerini döndürüyorum.Daha sonra data file da o konuma
+    giderek aranan değeri döndürüyorum.
+    Uptade kısmında değiştirilmek istenen değer array de tuttuğumuz key olan name değilse sadece data file da değişiklik yapıyorum.Name değiştirilmek isteniyorsa hem 
+    data file hem array değiştirilip Qsort yapılarak yeniden sıralanıyor.
+    Delete kısmında silinmek istenen değer search metodu ile bulunduktan sonra data file ve array konumlarındaki ilk biti "!" işareti ile değiştiriliyor.Silinme işleminden
+    sonra kullanıcının yapacağı her işlemde önce "!" işaret kontrolü yapılıyor.En son çıkış  yapıldıktan sonraki çalıştırmalarda program "!" işareti olanları array' e 
+    atmıyor.Bu sayede o değeri kullanmamış oluyoruz.
+    
+    
+    Sistemin doğru kapatılıp kapatılmadığını öğrenmek için dirty_flag isminde bir int değer tuttum.Sistem doğru kapatılırsa değeri 0 aksi halde 1 oluyor.İlk açılışlarda
+    index file da tuttuğum bu değeri okuyorum ve ona göre array'in data file veya index file'dan yüklenmesine karar veriyorum.
+    
+    Üç tane özel metot kullandım.Bunlar:
+     void  AddIndexArrayfromDATA() ----> Sistem yanlış kapatıldıysa açılışta data file'ı okuyup array'e ekler
+     void  AddIndexArrayfromINDEX() ---->Sistem doğru kapatıldıysa açılışta index file'ı okuyup array'e ekler
+     void  AddIndexFilefromARRAY() ---->Ana menude exit kısmıyla çıkılırsa arraydeki değerleri index file'a atar
